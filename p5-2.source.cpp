@@ -20,18 +20,23 @@ while(quit == false){
 if(cin.fail()){ // Quit Function 
     quit = true;
 }
-else{
+else{ // Input Analysis
     if(numInput > largest){
         largest = numInput;
     }
     if(numInput < smallest){
         smallest = numInput;
     }
-    if(numInput % 2 == 0)
+    if(numInput % 2 == 0){
         evenCount += 1;
+    }
+    if (numInput == 0){ // Handling 'zero' inputs
+        evenCount = 0;
+        oddCount = 0;
+    }   
         else{
             oddCount += 1;
-        }
+    }
 }
 }
 
