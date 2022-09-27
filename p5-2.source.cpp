@@ -17,25 +17,25 @@ while(quit == false){
     cout << "Enter number or Q to quit: ";
         cin >> numInput;
 
+// Input Analysis
 if(cin.fail()){ // Quit Function 
     quit = true;
 }
-else{ // Input Analysis
-    if(numInput > largest){
+else{
+    if(numInput > largest){ // Determining largest input
         largest = numInput;
     }
-    if(numInput < smallest){
+    if(numInput < smallest){ // Determining smallest input
         smallest = numInput;
     }
-    if(numInput % 2 == 0){
-        evenCount += 1;
-    }
+
     if (numInput == 0){ // Handling 'zero' inputs
         evenCount = 0;
         oddCount = 0;
-    }   
-        else{
-            oddCount += 1;
+    } else if(numInput % 2 == 0){ // Even Count
+        evenCount += 1;
+    }  else{ // Odd Count
+        oddCount += 1; 
     }
 }
 }
