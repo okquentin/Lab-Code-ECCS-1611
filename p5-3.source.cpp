@@ -4,7 +4,6 @@ using namespace std;
 int main(){
 
 // Variable Declarations
-
 int number = 0;
     int digit1;
     int digit2; 
@@ -14,11 +13,9 @@ int number = 0;
     int digit6; 
     int digit7;
     int digit8;
-
 bool quit = false;
 
 // User Prompt
-
 for(;;){
    cout << "Please enter a whole number: ";
         cin >> number;
@@ -57,8 +54,7 @@ digit8 = number % 2;
 	
 }
 
-// Converting output to a one-line string
-
+// Converting digits to strings
 string string1 = to_string(digit1);
 string string2 = to_string(digit2);
 string string3 = to_string(digit3);
@@ -68,14 +64,13 @@ string string6 = to_string(digit6);
 string string7 = to_string(digit7);
 string string8 = to_string(digit8);
 
+// Concantenating digits into one string (in proper order)
 string binaryString = string8 + string7 + string6 + string5 +string4 + string3 + string2 + string1;
 
 // Removing leading zeros by converting the string into an integer value
-
 int binaryOut = stoi(binaryString);
 
 // Outputting the binary number result
-
 cout << binaryOut << endl;
 
 return 0;
