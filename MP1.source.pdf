@@ -116,21 +116,19 @@ cout << "Changed owed is $" << changeDue << " - ";
 // Change Output in Coins;
 if(dollars > 0){
 
-    // Change type is compared to value '1' to check for plurality
-    // If no other change is due then a period is added.
+    // Change type is compared to value '1' to specify plurality, and if no other change is due then a period is added.
     // This code format is repeated for every coin type, except for pennies
     }if(dollars == 1 && quarters == 0 && dimes == 0 && nickels == 0 && pennies == 0){
         cout << dollars << " dollar.";
     }else if (dollars > 1 && quarters == 0 && dimes == 0 && nickels == 0 && pennies == 0){
         cout << dollars << " dollars.";
 
-    // Otherwise (if other change is also due), a comma is added. 
-    // Code is again compared to '1' to check for plurality
-    // This code format is also repeated for every coin type, except for pennies.
+    // Otherwise (if other change is also due), a comma is added. (Again compared to '1' to specify plurality)
+    // This code format is also repeated for every coin type, except for pennies
     }else if(dollars == 1){ 
-    cout << dollars << " dollar, ";
+        cout << dollars << " dollar, ";
     }else if (dollars > 1){
-    cout << dollars << " dollars, ";
+        cout << dollars << " dollars, ";
 
 }if(quarters > 0){
    
@@ -140,9 +138,9 @@ if(dollars > 0){
         cout << quarters << " quarters.";
 
     }else if(quarters == 1){ 
-    cout << quarters << " quarter, ";
+        cout << quarters << " quarter, ";
     }else if (quarters > 1){
-    cout << quarters << " quarters, ";
+        cout << quarters << " quarters, ";
 
 }if(dimes > 0){
    
@@ -152,9 +150,9 @@ if(dollars > 0){
         cout << dimes << " dimes.";
 
     }else if (dimes == 1){ 
-    cout << dimes << " dime, ";
+        cout << dimes << " dime, ";
     }else if (dimes > 1){
-    cout << dimes << " dimes, ";
+        cout << dimes << " dimes, ";
 
 }if(nickels > 0){
    
@@ -164,18 +162,17 @@ if(dollars > 0){
         cout << nickels << " dollars.";
 
     }else if(nickels == 1){ 
-    cout << nickels << " nickel, ";
+        cout << nickels << " nickel, ";
     }else if (nickels > 1){
-    cout << nickels << " nickels, ";
+        cout << nickels << " nickels, ";
 
 }if (pennies > 0){
 
-// Because pennies will always be the last output (if > 0)
-// All that is checked for is plurality.
+// Because pennies will always be the last output (if > 0), then all that is checked for is plurality.
     if(pennies == 1){
-    cout << pennies << " penny.";
+        cout << pennies << " penny.";
     }else
-    cout << pennies << " pennies.";
+        cout << pennies << " pennies.";
 
 } 
 return 0;
