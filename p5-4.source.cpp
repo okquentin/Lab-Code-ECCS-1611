@@ -1,3 +1,8 @@
+// Question to ask: 
+// why is my for loop infinite when cin > maximum threshold value for an integer in C++
+// (2147483647) is entered?
+
+
 #include <iostream>
 #include <iomanip>
 #include <string>
@@ -98,7 +103,7 @@ while(DoubleDigit4 > 0){
 int sumDouble = digit1 + digit2 + digit3 + digit4 + digit5 + digit6 + digit7 + digit8;
 
 
-//
+// 
 int checkSum = digitSum + sumDouble;
 
 // Checking if checkSum ends in zero and outputting card validity status based on yes/no

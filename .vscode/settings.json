@@ -4,6 +4,7 @@
         "ostream": "cpp",
         "ios": "cpp",
         "string": "cpp",
-        "iosfwd": "cpp"
+        "iosfwd": "cpp",
+        "iomanip": "cpp"
     }
 }

@@ -21,11 +21,13 @@ double amountPaid;
 double changeDue = (amountPaid - amountDue);
 
 // Change Output
-cout << fixed;
-cout << setprecision(2);
-cout << "Change due is  $" << changeDue << endl;
+
+    cout << fixed;
+    cout << setprecision(2);
+    cout << "Change owed is  $" << changeDue;
 
 // Coin Counting
+
 int coins = changeDue*100;
 
     int dollars = int(coins/100);
@@ -47,16 +49,21 @@ int coins = changeDue*100;
     
 
 // Coin Output 
+
 if(dollars > 0){
 
-cout << dollars << " dollars" << endl;
+cout << dollars << " dollars";
 
 } if(quarters > 0){
-cout << quarters << " quarters" << endl;
+    if(quarters = 1){
+    cout << quarters << " quarter";
+    }else{
+    cout << quarters << " quarters";
+
 } if(dimes > 0){
 cout << dimes << " dimes" << endl;
 }if (nickels > 0){
-cout << nickels << " nickels" << endl;
+cout << nickels << " nickels";
 }if (pennies > 0){
 cout << pennies << " pennies" << endl;
 }

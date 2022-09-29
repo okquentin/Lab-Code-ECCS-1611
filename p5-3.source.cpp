@@ -26,7 +26,6 @@ for(;;){
     if (number > 0)
     break;
 }
- 
 
 // Algorithim
   
