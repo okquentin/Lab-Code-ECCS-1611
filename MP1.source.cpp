@@ -117,26 +117,26 @@ cout << "Changed owed is $" << changeDue << " - ";
 // Change Output in Coins;
 if(dollars > 0){
     if(dollars == 1){
-    cout << dollars << " dollar ";
+    cout << dollars << " dollar, ";
     }else
-    cout << dollars << " dollars ";
+    cout << dollars << " dollars, ";
 }if(quarters > 0){
     if(quarters == 1){
-    cout << dollars << " quarter ";
+    cout << dollars << " quarter, ";
     }else
-    cout << quarters << " quarters ";
+    cout << quarters << " quarters, ";
 
 }if (dimes > 0){
     if(dimes == 1){
-    cout << dimes << " dime ";
+    cout << dimes << " dime, ";
     }else
-    cout << dimes << " dimes ";
+    cout << dimes << " dimes, ";
 
 }if (nickels > 0){
     if(nickels == 1){
-    cout << nickels << " nickel ";
+    cout << nickels << " nickel, ";
     }else
-    cout << nickels << " nickels ";
+    cout << nickels << " nickels, ";
 }if (pennies > 0){
     if(pennies == 1){
     cout << pennies << " penny.";
