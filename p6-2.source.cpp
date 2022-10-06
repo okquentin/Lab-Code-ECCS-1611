@@ -26,16 +26,17 @@ cout << endl;
 }
 
 // Generator for bottom half of diamon
-for(
+for(int row = numAst; row >= 1; row--){
 
     // Spaces
-    for(
+    for(int s = (numAst-row); s >= 1; s--){cout << " ";}
 
     // Asterisks
-    for(
+    for(int column = (row*2-1); column >= 1; column--){cout << "*";}
 
+cout << endl;
 
-
+}
 
 // End of program
 return 0;
