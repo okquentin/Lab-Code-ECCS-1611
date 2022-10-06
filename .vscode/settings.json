@@ -5,6 +5,7 @@
         "ios": "cpp",
         "string": "cpp",
         "iosfwd": "cpp",
-        "iomanip": "cpp"
+        "iomanip": "cpp",
+        "ratio": "cpp"
     }
 }
