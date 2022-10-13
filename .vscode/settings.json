@@ -6,6 +6,7 @@
         "string": "cpp",
         "iosfwd": "cpp",
         "iomanip": "cpp",
-        "ratio": "cpp"
+        "ratio": "cpp",
+        "chrono": "cpp"
     }
 }
