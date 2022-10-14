@@ -14,17 +14,17 @@ int main(){
 
 srand(time(0)); // Random seed
 
-moveFunc(1, 0, 0);
-moveFunc(2, 0, 0);
-moveFunc(3, 0, 0);
-moveFunc(4, 0, 0);
-moveFunc(5, 0, 0);
-moveFunc(6, 0, 0);
-moveFunc(7, 0, 0);
-moveFunc(8, 0, 0);
-moveFunc(9, 0, 0);
-moveFunc(10, 0, 0);
+// Variable Declarations
+int drunkNum = 1;
 
+// Calling Move Function
+while(drunkNum <= 10){
+
+moveFunc(drunkNum, 0, 0);
+drunkNum++;
+}
+
+// END OF MAIN
 return 0;    
 }
 
@@ -53,7 +53,7 @@ return rand() % range + -1; // Uses range to decide what position to move
 
 void moveFunc(int drunkNum, int posX, int posY){
 
-    int seconds = 0;
+int seconds = 0;
 
     while(seconds < 120){
     posX += movePos();
@@ -61,6 +61,7 @@ void moveFunc(int drunkNum, int posX, int posY){
 
     seconds++;
     }
+
 cout << "Drunkard #" << drunkNum << ": finished at location (" << posX << ", " << posY << ") \n";
 
 }
