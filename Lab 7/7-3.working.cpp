@@ -15,9 +15,12 @@ int main()
     cout << "Enter number or Q to quit: ";
     cin >> n;
 
-    while (!cin.fail())
+    if (!cin.fail())
     {
         cout << "First digit: " << first_digit(n) << " Last digit: " << last_digit(n) << " Number of digits: " << digits(n);
+    } else{
+        cout << "Please try entering digits again." << endl;
+        continue;
     }
 
 return 0;
