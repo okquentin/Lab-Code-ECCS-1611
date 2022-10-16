@@ -27,11 +27,12 @@ cout << "Welcome to the game of Pig" << endl;
 
 cout << "Player 1, please roll your die to begin the game." << endl;
 
-cout << "Are you ready to being your turn? ";
-    cin >> roll;
+
 
 // Players take turns rolling the dice.
 do{
+    cout << "Are you ready to begin your turn? ";
+    cin >> roll;
     if(!cin.fail()){
     firstDie = rollDie();
     secondDie = rollDie();
@@ -39,7 +40,7 @@ do{
     score = turnTotal(firstDie, secondDie);
     cout << "Your score is now: " << score << endl;
     }else{
-        cout << "Please type R or r in order to roll the dice. ";
+        cout << "Please indicate readiness in order to roll the dice." << endl;
         continue;
     }
     cout << "Roll again? (Y/N): ";
