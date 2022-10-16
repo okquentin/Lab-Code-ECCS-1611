@@ -21,11 +21,14 @@ char rollAgain;
 string winningPlayer;
 
 // User Prompt
-cout << "Welcome to the game of Pig" << endl;
+cout << "------------------ ECCS 1611 - MP2 ----------------" << endl;
+cout << "Welcome to the game of Pig!" << endl;
+cout << "Program designed by Quentin Osterhage" << endl;
+cout << "---------------------------------------------------" << endl;
 cout << "Player 1, please roll your die to begin the game." << endl;
 
 // Players take turns rolling the dice.
- cout << "Please type R to roll." << endl;
+ cout << "Are you ready to begin your turn?" << endl;
     cin >> roll;
 do{
     if(!cin.fail()){
