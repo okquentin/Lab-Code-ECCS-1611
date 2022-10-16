@@ -16,7 +16,9 @@ int main(){
 // Variable Declarations
 int firstDie;
 int secondDie;
+char roll;
 char rollAgain; 
+string winningPlayer;
 
 // User Prompt
 cout << "Welcome to the game of Pig" << endl;
@@ -25,10 +27,17 @@ cout << "Player 1, please roll your die to begin the game." << endl;
 // Players take turns rolling the dice.
 
 do{
+    cout << "Please type R to roll." << endl;
+        cin >> roll;
+    if(roll == 'R' || roll == 'r'){
     firstDie = rollDie();
     secondDie = rollDie();
     displayRollResults(firstDie, secondDie);
-
+    }else{
+        cout << "Please type R or r in order to roll the dice. ";
+        continue;
+    }
+   
     cout << "Roll again? (Y/N): ";
         cin >> rollAgain;
 
@@ -36,7 +45,7 @@ do{
 
 
 // END OF MAIN
-cout << "Thank you for playing!" << endl;
+cout << "Thank you for playing! Congratulations to " << winningPlayer << endl;
 return 0;
 }
 
