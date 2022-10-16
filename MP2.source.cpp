@@ -26,7 +26,7 @@ do{
     firstDie = rollDie();
     secondDie = rollDie();
     displayRollResults(firstDie, secondDie);
-    getUserInput;
+    char getUserInput;
 } while(continuePlay == 'Y' || continuePlay == 'y');
 
 
