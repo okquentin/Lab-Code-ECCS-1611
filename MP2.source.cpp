@@ -27,7 +27,7 @@ cout << "Player 1, please roll your die to begin the game." << endl;
 // Players take turns rolling the dice.
 
 do{
-    cout << "Please type R to roll." << endl;
+    cout << "Press any key to begin your turn: ";
         cin >> roll;
     if(!cin.fail()){
     firstDie = rollDie();
