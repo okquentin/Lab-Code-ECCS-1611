@@ -17,19 +17,25 @@ int main(){
 int firstDie;
 int secondDie;
 char roll;
-char rollAgain; 
+char rollAgain;
+string Player;
 string winningPlayer;
 
 // User Prompt
-cout << "------------------ ECCS 1611 - MP2 ----------------" << endl;
-cout << "Welcome to the game of Pig!" << endl;
-cout << "Program designed by Quentin Osterhage" << endl;
+cout << "-----------------[ECCS 1611 - MP2]-----------------" << endl;
+cout << "           Welcome to the game of Pig!" << endl;
+cout << "       Program designed by Quentin Osterhage" << endl;
 cout << "---------------------------------------------------" << endl;
-cout << "Player 1, please roll your die to begin the game." << endl;
 
 // Players take turns rolling the dice.
- cout << "Are you ready to begin your turn?" << endl;
+cout << "Player 1, are you ready to begin your turn? (Y/N)" << endl;
     cin >> roll;
+
+if(roll != 'Y' || roll != 'y'){
+    cout << "Please type 'y' to continue." << endl;
+        cin >> roll;
+}
+
 do{
     if(!cin.fail()){
     firstDie = rollDie();
