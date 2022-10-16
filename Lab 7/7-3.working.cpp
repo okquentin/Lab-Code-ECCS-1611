@@ -12,13 +12,17 @@ int main()
     int i = 0;
     int n;
 
+    for(;;){
     cout << "Enter number or Q to quit: ";
-    cin >> n;
+        cin >> n;
+    cout << "First digit: " << first_digit(n) << " Last digit: " << last_digit(n) << " Number of digits: " << digits(n);
 
-    if (!cin.fail())
-    {
-        cout << "First digit: " << first_digit(n) << " Last digit: " << last_digit(n) << " Number of digits: " << digits(n);
+    if (cin.fail()){
+        break;
     }
+    
+    }
+
 return 0;
 }
 
