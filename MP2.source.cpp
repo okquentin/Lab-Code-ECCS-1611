@@ -33,19 +33,15 @@ cout << "Player 1, please roll your die to begin the game." << endl;
 do{
     cout << "Are you ready to begin your turn? ";
     cin >> roll;
-    if(!cin.fail()){
+    
     firstDie = rollDie();
     secondDie = rollDie();
     displayRollResults(firstDie, secondDie);
     score = turnTotal(firstDie, secondDie);
     cout << "Your score is now: " << score << endl;
-    }else{
-        cout << "Please indicate readiness in order to roll the dice." << endl;
-        continue;
-    }
     cout << "Roll again? (Y/N): ";
-        cin >> rollAgain;
-
+    cin >> rollAgain;
+    
 } while(rollAgain == 'Y' || rollAgain == 'y');
 
 
