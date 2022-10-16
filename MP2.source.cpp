@@ -1,5 +1,4 @@
 #include <iostream>
-#include <conio.h>
 
 using namespace std;
 
@@ -24,12 +23,14 @@ string winningPlayer;
 // User Prompt
 cout << "Welcome to the game of Pig" << endl;
 cout << "Player 1, please roll your die to begin the game." << endl;
+cout << "Type any key to begin your turn: " << endl;
+    cin >> roll;
 
 // Players take turns rolling the dice.
 
 do{
-    cout << "Press any key to begin your turn: ";
-        getch();
+   
+    if(!cin.fail()){
     firstDie = rollDie();
     secondDie = rollDie();
     displayRollResults(firstDie, secondDie);
