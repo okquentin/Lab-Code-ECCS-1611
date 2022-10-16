@@ -6,7 +6,6 @@ using namespace std;
 int rollDie( void );
 bool isTurnScoreLost( int die1value, int die2value );
 bool isTotalScoreLost( int die1value, int die2value );
-int turnTotal(int die1value, int die2value);
 char getUserInput( void );
 bool isWinningScore( int score ); 
 void displayRollResults(int die1value, int die2value);
@@ -17,7 +16,6 @@ int main(){
 // Variable Declarations
 int firstDie;
 int secondDie;
-int score;
 char roll;
 char rollAgain; 
 string winningPlayer;
@@ -27,21 +25,23 @@ cout << "Welcome to the game of Pig" << endl;
 
 cout << "Player 1, please roll your die to begin the game." << endl;
 
-
+cout << "Are you ready to being your turn? ";
+    cin >> roll;
 
 // Players take turns rolling the dice.
+
 do{
-    cout << "Are you ready to begin your turn? ";
-    cin >> roll;
-    
+    if(!cin.fail()){
     firstDie = rollDie();
     secondDie = rollDie();
     displayRollResults(firstDie, secondDie);
-    score = turnTotal(firstDie, secondDie);
-    cout << "Your score is now: " << score << endl;
+    }else{
+        cout << "Please type R or r in order to roll the dice. ";
+        continue;
+    }
     cout << "Roll again? (Y/N): ";
-    cin >> rollAgain;
-    
+        cin >> rollAgain;
+
 } while(rollAgain == 'Y' || rollAgain == 'y');
 
 
@@ -57,12 +57,6 @@ int rollDie( void ){
 
     return rand() % NUMBER_OF_DIE_SIDES + LOWEST_DIE_VALUE;
 }
-
-int turnTotal(int die1value, int die2value){
-    int score = die1value + die2value;
-    return score;
-}
-
 
 bool isTurnScoreLost( int die1value, int die2value ){
     if(die1value == 1 || die2value == 1){return true;} 
