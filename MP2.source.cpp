@@ -64,7 +64,8 @@ char getUserInput( void ){
 // bool isWinningScore( int score ){}
 
 void displayRollResults(int die1value, int die2value){
-    if(isTurnScoreLost == true){
+    bool turnLost = (isTurnScoreLost);
+    if(turnLost == true){
         cout << "Sorry! You've rolled a 1. Your turn has ended, with a total of 0" << endl;
     }
 }
