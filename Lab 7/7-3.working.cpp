@@ -15,7 +15,7 @@ int main()
     for(;;){
     cout << "Enter number or Q to quit: ";
         cin >> n;
-    cout << "First digit: " << first_digit(n) << " Last digit: " << last_digit(n) << " Number of digits: " << digits(n);
+    cout << "First digit: " << first_digit(n) << " Last digit: " << last_digit(n) << " Number of digits: " << digits(n) << endl;
 
     if (cin.fail()){
         break;
