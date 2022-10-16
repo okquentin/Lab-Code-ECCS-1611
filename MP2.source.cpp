@@ -16,9 +16,11 @@ int main(){
 // Variable Declarations
 int firstDie;
 int secondDie;
-char continuePlay = getUserInput(); 
+char rollAgain; 
 
 // User Prompt
+cout << "Welcome to the game of Pig" << endl;
+cout << "Player 1, please roll your die to begin the game." << endl;
 
 // Players take turns rolling the dice.
 
@@ -26,8 +28,11 @@ do{
     firstDie = rollDie();
     secondDie = rollDie();
     displayRollResults(firstDie, secondDie);
-    char getUserInput;
-} while(continuePlay == 'Y' || continuePlay == 'y');
+
+    cout << "Roll again? (Y/N): ";
+        cin >> rollAgain;
+
+} while(rollAgain == 'Y' || rollAgain == 'y');
 
 
 // END OF MAIN
@@ -36,7 +41,6 @@ return 0;
 }
 
 // FUNCTION HEADERS
-
 int rollDie( void ){
     const int NUMBER_OF_DIE_SIDES = 6;
     const int LOWEST_DIE_VALUE = 1;
@@ -54,12 +58,8 @@ bool isTotalScoreLost( int die1value, int die2value ){
     else return false;
 }
 
-char getUserInput( void ){
-    char rollAgain;
-    cout << "Roll again? (Y/N): ";
-        cin >> rollAgain;
-    return(rollAgain);
-}
+// char getUserInput( void ){
+// }
 
 // bool isWinningScore( int score ){}
 
