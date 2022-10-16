@@ -1,85 +1,78 @@
-#include <ctime>
 #include <iostream>
 #include <cmath>
+
 using namespace std;
 
-int main()
-{
-    double y = 0;
-    double x = 0;
-    int i = 0;
-    double final_x = 0;
-    double final_y = 0;
-    double distance;
-    double total_dist = 0;
-    double avg_dist;
-    double exp_dist = 0;
-    double avg_length = 1.072983805;
-    int numb;
-    int drunkard;
-    int min;
-    srand(time(0));
+// FUNCTION PROTOTYPES
 
-    cout << "Enter number of minutes for each drunkard to stagger: ";
-    cin >> min;
+void expected(double minute);
+void moveFunc(int drunkNum, int posX, int posY);
+void average(int numMinutes);
 
-    min = min * 60;
+// MAIN FUNCTION
+int main(){
 
-    for (drunkard = 0; drunkard <= 10000; drunkard++)
-    {
-        y = 0;
-        x = 0;
-        i = 0;
+// Variable Declarations
+double numMinutes;
+double expectedDistance;
+int drunkNum = 1;
 
-        while (i <= min)
-        {
-            numb = (rand() % 9) + 1;
+// User Prompt
+cout << "Enter number of minutes for each drunkard to stagger: ";
+    cin >> numMinutes;
 
-            if (numb == 1)
-            {
-                y++;
-            }
-            else if (numb == 2)
-            {
-                y--;
-            }
-            else if (numb == 3)
-            {
-                x++;
-            }
-            else if (numb == 4)
-            {
-                x--;
-            }
-            else if (numb == 5)
-            {
-                x++;
-                y++;
-            }
-            else if (numb == 6)
-            {
-                x++;
-                y--;
-            }
-            else if (numb == 7)
-            {
-                x--;
-                y--;
-            }
-            else if (numb == 8)
-            {
-                x--;
-                y++;
-            }
-
-            i++;
-        }
-
-        distance = sqrt(pow(x, 2) + pow(y, 2));
-        total_dist = total_dist + distance;
-    }
-    exp_dist = sqrt(min * avg_length);
-    avg_dist = total_dist / 10000;
-    cout << "Expected distance: " << exp_dist << endl;
-    cout << "Average distance:  " << avg_dist;
+// Calling Functions
+while(drunkNum <= 100000){
+    moveFunc(drunkNum, 0, 0, numMinutes);
+    drunkNum++;
 }
+expected(numMinutes);
+average(numMinutes);
+
+return 0;
+}
+
+
+
+// FUNCTION DEFINITIONS
+
+void expected(double minute){
+
+    double totalNum = minute*60;
+    double avgLength = ((4*sqrt(2))+4)/9;
+    double expectedDistance = sqrt(totalNum*avgLength);
+    cout << "Expected distance: " << expectedDistance;
+}
+
+int movePos(void){
+int range = 1-(-1)+1; // Set range for rand between 1 and -1 inclusive
+
+return rand() % range + -1; // Uses range to decide what position to move 
+}
+
+void moveFunc(int drunkNum, int posX, int posY, int numMinutes){
+    numMinutes*=60;
+    int seconds = 0;
+    int sum = 0;
+    int distance =0;
+
+    while(seconds < numMinutes){
+    posX += movePos();
+    posY += movePos();
+    seconds++;
+    distance += sqrt(posX^2)+sqrt(posY^2);
+    }
+    sum += distance;
+    
+    cout << sum;
+}
+
+void average(int numMinutes){
+//     int drunkNum = 1;
+//     int sum = 0;
+
+//     while(drunkNum <= 10000){
+//     moveFunc(drunkNum, 0, 0, numMinutes);
+//     drunkNum++;
+//     } 
+// }

@@ -1,51 +1,48 @@
 #include <iostream>
-
+#include <string>
 using namespace std;
 
+// FUNCTION PROTOTYPES
 int first_digit(int n);
-int first_digit(int n)
-{
-    while (n >= 10)
-    {
-        n = n / 10;
-    }
-    return (n);
-}
-
 int last_digit(int n);
-int last_digit(int n)
-{
-    n = n % 10;
-    return (n);
-}
-
 int digits(int n);
-int digits(int n)
-{
-    int i = 0;
-    while (n > 0)
-    {
-        n = n / 10;
-        i++;
-    }
-    return (i);
-}
 
-int main()
-{
-    int i = 0;
-    int n;
+// MAIN FUNCTION
+int main(){
 
+// Variable Declarations
+bool quit = false;
+int numInput;
+int count = 0;
+int length = 0;
+
+// User Prompt
+while(!cin.fail()){
     cout << "Enter number or Q to quit: ";
-    cin >> n;
+        cin >> numInput;
 
-    if (cin.fail())
-    {
-        cout << "No data.";
-    }
-    else
-    {
-        cout << "First digit: " << first_digit(n) << " Last digit: " << last_digit(n) << " Number of digits: " << digits(n);
-    }
+    string numString = to_string(numInput);
+    cout << numString;
+}  
 
+
+
+
+// Calling Functions
+
+// END OF MAIN
+return 0; 
 }
+
+
+// FUNCTION DEFINITIONS
+
+// int first_digit(int n){}
+
+// int last_digit(int n){}
+
+// int digits(int n){
+
+
+// return;
+// }
