@@ -28,11 +28,11 @@ cout << "       Program designed by Quentin Osterhage" << endl;
 cout << "---------------------------------------------------" << endl;
 
 // Players take turns rolling the dice.
-cout << "Player 1, are you ready to begin your turn? (Y/N)" << endl;
+cout << "Player 1, are you ready to begin your turn? (Y/N): ";
     cin >> roll;
 
 if(roll != 'Y' || roll != 'y'){
-    cout << "Please type 'y' to continue." << endl;
+    cout << "Please type 'y' to continue: ";
         cin >> roll;
 }
 
