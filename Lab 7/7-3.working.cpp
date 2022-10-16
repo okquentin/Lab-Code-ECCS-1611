@@ -2,6 +2,7 @@
 
 using namespace std;
 
+// Function Prototypes
 int first_digit(int n);
 int last_digit(int n);
 int digits(int n);
@@ -14,12 +15,16 @@ int main()
     cout << "Enter number or Q to quit: ";
     cin >> n;
 
-    if (!cin.fail())
+    while (!cin.fail())
     {
         cout << "First digit: " << first_digit(n) << " Last digit: " << last_digit(n) << " Number of digits: " << digits(n);
     }
 
+return 0;
 }
+
+// Function Headers
+
 int first_digit(int n)
 {
     while (n >= 10)
