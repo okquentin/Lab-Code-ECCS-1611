@@ -29,7 +29,7 @@ cout << "Player 1, please roll your die to begin the game." << endl;
 do{
     cout << "Please type R to roll." << endl;
         cin >> roll;
-    if(roll == 'R' || roll == 'r'){
+    if(!cin.fail()){
     firstDie = rollDie();
     secondDie = rollDie();
     displayRollResults(firstDie, secondDie);
@@ -77,6 +77,6 @@ void displayRollResults(int die1value, int die2value){
     if(turnLost == true){
         cout << "Sorry! You've rolled a 1. Your turn has ended, with a total of 0" << endl;
     } else{
-        cout << "You've rolled a " << die1value << " and a " << die2value << "!";
+        cout << "You've rolled a " << die1value << " and a " << die2value << "!" << endl;
     }
 }
