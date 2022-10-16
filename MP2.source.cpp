@@ -1,4 +1,5 @@
 #include <iostream>
+#include <conio.h>
 
 using namespace std;
 
@@ -28,8 +29,7 @@ cout << "Player 1, please roll your die to begin the game." << endl;
 
 do{
     cout << "Press any key to begin your turn: ";
-        cin >> roll;
-    if(!cin.fail()){
+        getch();
     firstDie = rollDie();
     secondDie = rollDie();
     displayRollResults(firstDie, secondDie);
