@@ -22,15 +22,13 @@ string winningPlayer;
 
 // User Prompt
 cout << "Welcome to the game of Pig" << endl;
-
 cout << "Player 1, please roll your die to begin the game." << endl;
-
-cout << "Are you ready to being your turn? ";
-    cin >> roll;
 
 // Players take turns rolling the dice.
 
 do{
+    cout << "Please type R to roll." << endl;
+        cin >> roll;
     if(!cin.fail()){
     firstDie = rollDie();
     secondDie = rollDie();
@@ -39,6 +37,7 @@ do{
         cout << "Please type R or r in order to roll the dice. ";
         continue;
     }
+   
     cout << "Roll again? (Y/N): ";
         cin >> rollAgain;
 
@@ -46,7 +45,7 @@ do{
 
 
 // END OF MAIN
-cout << "Thank you for playing, and congratulations to " << winningPlayer << '!' << endl;
+cout << "Thank you for playing! Congratulations to " << winningPlayer << "!" << endl;
 return 0;
 }
 
