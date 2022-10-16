@@ -21,7 +21,7 @@ while(!cin.fail()){
     cout << "Enter number or Q to quit: ";
         cin >> numInput;
 
-    string numString += to_string(numInput);
+    string numString = to_string(numInput);
     cout << numString;
 }  
 

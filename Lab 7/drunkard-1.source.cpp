@@ -65,4 +65,3 @@ int seconds = 0;
 cout << "Drunkard #" << drunkNum << ": finished at location (" << posX << ", " << posY << ") \n";
 
 }
-

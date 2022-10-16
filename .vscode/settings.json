@@ -8,6 +8,7 @@
         "iomanip": "cpp",
         "ratio": "cpp",
         "chrono": "cpp",
-        "istream": "cpp"
+        "istream": "cpp",
+        "ctime": "cpp"
     }
 }
