@@ -34,7 +34,7 @@ cout << "---------------------------------------------------" << endl;
 cout << "Player 1, are you ready to begin your turn? (Y/N): ";
     cin >> roll;
 
-if(roll != 'Y' || roll != 'y'){
+if(roll != 'Y' && roll != 'y'){
     cout << "Please type 'y' to continue: ";
         cin >> roll;
 }
@@ -45,6 +45,7 @@ do{
     secondDie = rollDie();
     displayRollResults(firstDie, secondDie);
     score = turnTotal(firstDie, secondDie);
+    cout << "Your score is now " << score <<'.';
     // gameTotal(score);
     }
    
