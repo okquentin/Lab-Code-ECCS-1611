@@ -73,7 +73,7 @@ int gameTotal(int dieTotal){
 
 int turnTotal(int die1value, int die2value){
     int score = 0;
-    int score = score + die1value + die2value;
+    score = score + die1value + die2value;
     return score;
 }
 
