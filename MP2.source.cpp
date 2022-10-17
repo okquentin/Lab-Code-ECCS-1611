@@ -45,7 +45,7 @@ do{
     secondDie = rollDie();
     displayRollResults(firstDie, secondDie);
     score = turnTotal(firstDie, secondDie);
-    gameTotal(score);
+    // gameTotal(score);
     }
    
     cout << "Roll again? (Y/N): ";
