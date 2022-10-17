@@ -76,9 +76,9 @@ bool isTurnScoreLost( int die1value, int die2value ){
     else return false;
 }
 
-int gameTotal(int dieTotal){
+// int gameTotal(int dieTotal){
 
-}
+// }
 
 bool isTotalScoreLost( int die1value, int die2value ){
     if(die1value == 1 && die2value == 1){return true;}
