@@ -67,9 +67,9 @@ int rollDie( void ){
     return rand() % NUMBER_OF_DIE_SIDES + LOWEST_DIE_VALUE;
 }
 
-int gameTotal(int dieTotal){
+// int gameTotal(int dieTotal){
 
-}
+// }
 
 int turnTotal(int die1value, int die2value){
     int score = 0;
