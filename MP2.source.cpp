@@ -45,7 +45,7 @@ do{
     secondDie = rollDie();
     displayRollResults(firstDie, secondDie);
     score = turnTotal(firstDie, secondDie);
-    cout << "Your score is now " << score <<'.';
+    cout << "Your score is now " << score <<'.' << endl;
     // gameTotal(score);
     }
    
@@ -67,8 +67,13 @@ int rollDie( void ){
     return rand() % NUMBER_OF_DIE_SIDES + LOWEST_DIE_VALUE;
 }
 
+int gameTotal(int dieTotal){
+
+}
+
 int turnTotal(int die1value, int die2value){
-    int score = die1value + die2value;
+    int score = 0;
+    int score = score + die1value + die2value;
     return score;
 }
 
@@ -77,9 +82,6 @@ bool isTurnScoreLost( int die1value, int die2value ){
     else return false;
 }
 
-// int gameTotal(int dieTotal){
-
-// }
 
 bool isTotalScoreLost( int die1value, int die2value ){
     if(die1value == 1 && die2value == 1){return true;}
