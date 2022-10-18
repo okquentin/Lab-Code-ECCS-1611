@@ -11,21 +11,19 @@ bool isTotalScoreLost( int die1value, int die2value );
 char getUserInput( void );
 bool isWinningScore( int score ); 
 void displayRollResults(int die1value, int die2value);
+void playerRoll(int die1value, int die2value);
 void computerRoll(int die1value, int die2value);
 
 // MAIN FUNCTION
 int main(){
 
 // Variable Declarations
-int firstDie;
-int secondDie;
-char roll;
-int scoreP1;
+int die1;
+int die2;
+char ready;
 char rollAgain;
-bool turnFail = isTurnScoreLost(firstDie, secondDie);
-bool gameFail = isTotalScoreLost(firstDie, secondDie);
-string Player;
-string winningPlayer;
+int playScore;
+int comScore;
 
 // User Prompt
 cout << "-----------------[ECCS 1611 - MP2]-----------------" << endl;
@@ -33,37 +31,22 @@ cout << "             Welcome to the game of Pig!" << endl;
 cout << "       Program designed by Quentin Osterhage" << endl;
 cout << "---------------------------------------------------" << endl;
 
-// Players take turns rolling the dice.
-cout << "Player 1, are you ready to begin your turn? (Y/N): ";
-    cin >> roll;
+// Asking Player if ready to take their turn
+ready = getUserInput();
 
-if(roll != 'Y' && roll != 'y'){
-    cout << "Please type 'y' to continue: ";
-        cin >> roll;
-}
-
+if(ready == 'Y' || ready == 'y'){
 do{
-    if(!cin.fail()){
-    firstDie = rollDie();
-    secondDie = rollDie();
-    displayRollResults(firstDie, secondDie);
-    scoreP1 = turnTotal(firstDie, secondDie);
-    cout << "Your score is now " << scoreP1 <<'.' << endl;
-    // gameTotal(score);
-    }
-   
+    playerRoll(die1, die2);
     cout << "Roll again? (Y/N): ";
         cin >> rollAgain;
-
+    int comScore = turnTotal(die1, die2)
 } while(rollAgain == 'Y' || rollAgain == 'y');
+}
 
-firstDie = 0;
-secondDie = 0;
-computerRoll(firstDie, secondDie);
 
+computerRoll(die1, die2);
 
 // END OF MAIN
-cout << "Thank you for playing! Congratulations to " << winningPlayer << "!" << endl;
 return 0;
 }
 
@@ -73,11 +56,6 @@ int rollDie( void ){
     const int LOWEST_DIE_VALUE = 1;
     return rand() % NUMBER_OF_DIE_SIDES + LOWEST_DIE_VALUE;
 }
-
-// int gameTotal(int dieTotal){
-
-// }
-
 
 bool isTurnScoreLost( int die1value, int die2value ){
     if(die1value == 1 || die2value == 1){return true;} 
@@ -92,38 +70,64 @@ int turnTotal(int die1value, int die2value){
     return score;
 }
 
+int gameTotal(int total, int turn){
+    int gameTotal;
+    gameTotal += turnTotal;
+    return gameTotal;
+}
+
 bool isTotalScoreLost( int die1value, int die2value ){
     if(die1value == 1 && die2value == 1){return true;}
     else return false;
 }
 
 
+char getUserInput( void ){
+    char roll;
+    cout << "Player 1, are you ready to begin your turn? (Y/N): ";
+    cin >> roll;
+    return roll;
+}
 
-// char getUserInput( void ){
-// }
+bool isWinningScore( int score ){
+    if(score >= 100){return true;} 
+    else{return false;}
+}
 
-// bool isWinningScore( int score ){}
 
 void displayRollResults(int die1value, int die2value){
     bool turnLost = isTurnScoreLost(die1value, die2value);
     bool totalLost = isTotalScoreLost(die1value, die2value);
-    if(turnLost == true){
-        cout << "Sorry! You've rolled a 1. Your turn has ended, with a total of 0" << endl;
-    } else if(totalLost == true){cout << "Ouch! Snake eyes! Your total score has been wiped to 0.";}
+    if(turnLost == true){cout << "Sorry! You've rolled a 1. Your turn has ended, with a total of 0." << endl;} 
+    else if(totalLost == true){cout << "Ouch! Snake eyes! Your total score has been wiped to 0." << endl;}
     else{
-        cout << "You've rolled a " << die1value << " and a " << die2value << "!" << endl;
+        cout << "Rolled a " << die1value << " and a " << die2value << "!" << endl;
     }
 }
 
-void computerRoll(int die1value, int die2value){
-    int scoreCOM = 0;
-    while(scoreCOM <= 20){
+void playerRoll(int die1value, int die2value){
+    int turnP1 = 0;
+    int totalP1 = 0;
+    die1value = rollDie();
+    die2value = rollDie();
+    displayRollResults(die1value, die2value);
+    turnP1 = turnTotal(die1value, die2value);
+    totalP1 += turnP1;
+    gameTotal(totalP1, turnP1);
+    cout << "Your score is now " << turnP1 <<'.' << endl;
+}
 
+void computerRoll(int die1value, int die2value){
+    int turnCOM = 0;
+    int totalCOM= 0;
+    while(turnCOM <= 20){
     
     die1value = rollDie();
     die2value = rollDie();
     displayRollResults(die1value, die2value);
-    scoreCOM = turnTotal(die1value, die2value);
-    cout << "Computer score is now " << scoreCOM <<'.' << endl;
-    }
+    turnCOM= turnTotal(die1value, die2value);
+    totalCOM += turnCOM;
+    gameTotal(totalCOM, turnCOM);
+    cout << "Your score is now " << turnCOM <<'.' << endl;
+}
 }
