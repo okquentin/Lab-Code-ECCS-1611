@@ -71,22 +71,26 @@ int rollDie( void ){
 
 // }
 
-int turnTotal(int die1value, int die2value){
-    int score = 0;
-    score = score + die1value + die2value;
-    return score;
-}
 
 bool isTurnScoreLost( int die1value, int die2value ){
     if(die1value == 1 || die2value == 1){return true;} 
     else return false;
 }
 
+int turnTotal(int die1value, int die2value){
+    int score = 0;
+    bool turnFail = isTurnScoreLost(die1 value, die2value);
+    score = score + die1value + die2value;
+    if(turnFail == true){score = 0;}
+    return score;
+}
 
 bool isTotalScoreLost( int die1value, int die2value ){
     if(die1value == 1 && die2value == 1){return true;}
     else return false;
 }
+
+
 
 // char getUserInput( void ){
 // }
