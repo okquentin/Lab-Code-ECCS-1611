@@ -109,7 +109,3 @@ void displayRollResults(int die1value, int die2value){
         cout << "You've rolled a " << die1value << " and a " << die2value << "!" << endl;
     }
 }
-
-int playerTurn(void){
-    
-}
