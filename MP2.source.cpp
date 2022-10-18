@@ -11,6 +11,7 @@ bool isTotalScoreLost( int die1value, int die2value );
 char getUserInput( void );
 bool isWinningScore( int score ); 
 void displayRollResults(int die1value, int die2value);
+void computerRoll(int die1value, int die2value);
 
 // MAIN FUNCTION
 int main(){
@@ -19,7 +20,7 @@ int main(){
 int firstDie;
 int secondDie;
 char roll;
-int score;
+int scoreP1;
 char rollAgain;
 bool turnFail = isTurnScoreLost(firstDie, secondDie);
 bool gameFail = isTotalScoreLost(firstDie, secondDie);
@@ -46,8 +47,8 @@ do{
     firstDie = rollDie();
     secondDie = rollDie();
     displayRollResults(firstDie, secondDie);
-    score = turnTotal(firstDie, secondDie);
-    cout << "Your score is now " << score <<'.' << endl;
+    scoreP1 = turnTotal(firstDie, secondDie);
+    cout << "Your score is now " << scoreP1 <<'.' << endl;
     // gameTotal(score);
     }
    
@@ -55,6 +56,10 @@ do{
         cin >> rollAgain;
 
 } while(rollAgain == 'Y' || rollAgain == 'y');
+
+firstDie = 0;
+secondDie = 0;
+computerRoll(firstDie, secondDie);
 
 
 // END OF MAIN
@@ -107,5 +112,18 @@ void displayRollResults(int die1value, int die2value){
     } else if(totalLost == true){cout << "Ouch! Snake eyes! Your total score has been wiped to 0.";}
     else{
         cout << "You've rolled a " << die1value << " and a " << die2value << "!" << endl;
+    }
+}
+
+void computerRoll(int die1value, int die2value){
+    int scoreCOM = 0;
+    while(scoreCOM <= 20){
+
+    
+    die1value = rollDie();
+    die2value = rollDie();
+    displayRollResults(die1value, die2value);
+    scoreCOM = turnTotal(die1value, die2value);
+    cout << "Computer score is now " << scoreCOM <<'.' << endl;
     }
 }
