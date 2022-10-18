@@ -39,7 +39,7 @@ do{
     playerRoll(die1, die2);
     cout << "Roll again? (Y/N): ";
         cin >> rollAgain;
-    int comScore = turnTotal(die1, die2)
+    int comScore = turnTotal(die1, die2);
 } while(rollAgain == 'Y' || rollAgain == 'y');
 }
 
@@ -71,9 +71,8 @@ int turnTotal(int die1value, int die2value){
 }
 
 int gameTotal(int total, int turn){
-    int gameTotal;
-    gameTotal += turnTotal;
-    return gameTotal;
+    total += turn;
+    return total;
 }
 
 bool isTotalScoreLost( int die1value, int die2value ){
