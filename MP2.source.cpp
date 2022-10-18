@@ -21,6 +21,8 @@ int secondDie;
 char roll;
 int score;
 char rollAgain;
+bool turnFail = isTurnScoreLost(firstDie, secondDie);
+bool gameFail = isTotalScoreLost(firstDie, secondDie);
 string Player;
 string winningPlayer;
 
@@ -79,7 +81,7 @@ bool isTurnScoreLost( int die1value, int die2value ){
 
 int turnTotal(int die1value, int die2value){
     int score = 0;
-    bool turnFail = isTurnScoreLost(die1 value, die2value);
+    bool turnFail = isTurnScoreLost(die1value, die2value);
     score = score + die1value + die2value;
     if(turnFail == true){score = 0;}
     return score;
@@ -106,4 +108,8 @@ void displayRollResults(int die1value, int die2value){
     else{
         cout << "You've rolled a " << die1value << " and a " << die2value << "!" << endl;
     }
+}
+
+int playerTurn(void){
+    
 }
