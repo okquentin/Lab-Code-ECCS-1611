@@ -34,9 +34,12 @@ int main()
     cout << "   ECCS 1611 - MP2 ""Roll Em' Pigs"" \n";
     cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
 
+    // The main algorithim for running the game 
+    //Runs until a winner has been decided.
 	while (!isWinningScore(total1, total2))
 	{   bool turnDone = false;
         cout << endl;
+
 		cout << "|------  ROUND " << roundNum;
         if(roundNum < 10){cout << " ------|\n";}
         else{cout << " -----|\n";}
