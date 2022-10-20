@@ -36,7 +36,10 @@ int main()
 
 	while (!isWinningScore(total1, total2))
 	{   bool turnDone = false;
-		cout << "|------  ROUND " << roundNum << " ------|\n";
+        cout << endl;
+		cout << "|------  ROUND " << roundNum;
+        if(roundNum < 10){cout << " ------|\n";}
+        else{cout << " -----|\n";}
 		cout << "|   Player score: " << total1;
         if(total1 < 10){cout << "    |\n";}
         else{cout << "   |\n";}
@@ -134,26 +137,29 @@ int main()
 		roundNum++;
 	}
 
+// Displaying Game Result w/ Ascii Art
 	if (total1 > total2)
 	{
         cout << "\n";
-        cout << "     [PLAYER VICTORY]      ";
-		cout << "You've beat the computer! \n.";
+        cout << "     [PLAYER VICTORY]      \n";
+		cout << "You've beat the computer! \n";
         cout << "    Congratulations! \n";
+        cout << endl;
 
-        cout << "┈┈┈┈┈┈▕▔╲ \n";
-        cout << "┈┈┈┈┈┈┈▏▕ \n";
-        cout << "┈┈┈┈┈┈┈▏▕▂▂▂ \n";
-        cout << "▂▂▂▂▂▂╱┈▕▂▂▂▏\n";
-        cout << "▉▉▉▉▉┈┈┈▕▂▂▂▏\n";
-        cout << "▉▉▉▉▉┈┈┈▕▂▂▂▏\n";
-        cout << "▔▔▔▔▔▔╲▂▕▂▂▂ \n";
+        cout << "      ┈┈┈┈┈┈▕▔╲ \n";
+        cout << "      ┈┈┈┈┈┈┈▏▕ \n";
+        cout << "      ┈┈┈┈┈┈┈▏▕▂▂▂ \n";
+        cout << "      ▂▂▂▂▂▂╱┈▕▂▂▂▏\n";
+        cout << "      ▉▉▉▉▉┈┈┈▕▂▂▂▏\n";
+        cout << "      ▉▉▉▉▉┈┈┈▕▂▂▂▏\n";
+        cout << "      ▔▔▔▔▔▔╲▂▕▂▂▂ \n";
+        cout << endl;
 	}
 	else if (total2 > total1) {
         cout << "\n";
-		cout << "             [COMPUTER VICTORY]     \n";
-        cout << "       The computer has won the game! \n";
-        cout << "           Better luck next time! \n";
+		cout << "          [COMPUTER VICTORY]     \n";
+        cout << "     The computer has won the game! \n";
+        cout << "         Better luck next time! \n";
 
             cout << "     ,---------------------------,\n";
             cout << "     |  /---------------------\\  |\n";
