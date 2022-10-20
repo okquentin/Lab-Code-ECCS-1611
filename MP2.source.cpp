@@ -2,7 +2,8 @@
 using namespace std;
 
 // Global Variables
- 
+int scorePlay = 0;
+int scoreCom = 0;
 
 // Function Prototypes
 char getUserInput(void);
@@ -31,6 +32,7 @@ cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
 cout << "[PLAYER TURN " << playCount << "]\n";
 cout << "\n";
 
+while(!isWinningScore(scorePlay) && !isWinningScore(scoreCom)){
 playCount = playTurn();
 
 cout << "\n";
@@ -38,6 +40,7 @@ cout << "[COMPUTER TURN " << compCount << "]\n";
 cout << "\n";
 
 compCount = compTurn();
+}
 
 // END OF MAIN
 return 0;
