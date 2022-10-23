@@ -1,18 +1,16 @@
 #include <iostream>
 using namespace std;
 
-// Global Variables
-int scorePlay = 0;
-int scoreCom = 0;
-
-// Function Prototypes
+//*** FUNCTION PROTOTYPES ***
 char getUserInput(void);
 int rollDie(void);
 bool isTurnScoreLost(int die1value, int die2value);
 bool isTotalScoreLost(int die1value, int die2value);
 bool isWinningScore(int score);
-bool isWinningScore(int score1, int score2);
+bool WinningScore(int score1, int score2);
 
+
+// *** MAIN FUNCTION ***
 int main()
 {
 	int total1 = 0;
@@ -34,7 +32,7 @@ int main()
 
     // The main algorithim for running the game 
     // Runs until a winner has been decided
-	while (!isWinningScore(total1, total2))
+	while (!WinningScore(total1, total2))
 	{   
 		bool turnDone = false;
         cout << endl;
@@ -63,6 +61,7 @@ int main()
 			die2Value = 0;
 			cout << "Turn score: " << turnTotal << endl;
 			input = getUserInput();
+			
 			// Rolls die when correct input is gathered from getUserInput()
 			if (input == 'r')
 			{
@@ -207,12 +206,16 @@ int main()
     
 	}
 
-// END OF MAIN
+// *** END OF MAIN ***
 return 0;
 }
 
 
-// FUNCTION HEADERS
+// *** FUNCTION DEFINITIONS ***
+
+// * getUserInput: Prompts the user to either roll the dice or end their turn.
+// * Parameters: none
+// * Returns: char roll - character of R/r or S/s.
 char getUserInput(void){
     char roll;
     do{
@@ -227,28 +230,48 @@ char getUserInput(void){
     return roll;
 }
 
+// * rollDie: Simulates the roll of a single die.
+// * Parameters: none
+// * Returns: int - The value of a single die (1-6).
+
 int rollDie(void){
     const int NUMBER_OF_DIE_SIDES = 6;
     const int LOWEST_DIE_VALUE = 1;
     return rand() % NUMBER_OF_DIE_SIDES + LOWEST_DIE_VALUE;
 }
 
+// * isTurnScoreLost: Determines whether a 1 has been rolled.
+// * Parameters: int die1value, int die2value - values of the two dice rolled.
+// * Returns: boolean result - true or false
+
 bool isTurnScoreLost(int die1value, int die2value){
 	if(die1value == 1 || die2value == 1){return true;} 
 	else{return false;}
 }
+
+// * isTotalScoreLost: Determines whether two 1's have been rolled.
+// * Parameters: int die1value, intdie2value - values of the two dice rolled.
+// * Returns: boolean result - true or false
 
 bool isTotalScoreLost(int die1value, int die2value){
 	if(die1value == 1 && die2value == 1){return true;} 
 	else{return false;}
 }
 
+// * isWinningScore: Determines whether a player has reached 100 points.
+// * Parameters: int score - total score of the human player or the computer
+// * Returns: boolean result - true or false
+
 bool isWinningScore(int score){
 	if(score >= 100){return true;}
 	else{return false;}
 }
 
-bool isWinningScore(int score1, int score2){
+// * WinningScore: Uses isWinningScore function to determine if the human or computer has reached 100 points.
+// * Parameters: int score1, int score2 - the total scores of the human and computer respectively
+// * Returns: boolean result - true or false
+
+bool WinningScore(int score1, int score2){
 	if(isWinningScore(score1)){return true;}
 	else if(isWinningScore(score2)){return true;}
 	else{return false;}
