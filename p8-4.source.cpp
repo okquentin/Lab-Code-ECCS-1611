@@ -6,33 +6,33 @@ int romanCharValue(char r);
 
 int convertRomanToInt(string s);
 
-int main()
-{
-    while (true)
-    {
-        string s;
-        cout << "Enter Roman number or Q to quit: ";
-        cin >> s;
-        if (s == "q" || s == "Q")
-        {
-            break;
-        }
-        cout << s << " = " << convertRomanToInt(s) << endl;
-    }
+
+// BEGIN MAIN
+int main(){
+
+// Variable Declarations
+string s;
+
+// Main Algorithim
+for(;;){
+    cout << "Enter Roman number or Q to quit: ";
+        getline(cin, s);
+    if (s == "q" || s == "Q"){break;}
+    cout << s << " = " << convertRomanToInt(s) << endl;
 }
 
-int convertRomanToInt(string s)
-{
+// END MAIN
+return 0;
+}
+
+int convertRomanToInt(string s){
     int total = 0;
-    while (s.length() > 0)
-    {
-        if (romanCharValue(s[0]) >= romanCharValue(s[1]))
-        {
+    while (s.length() > 0){
+        if (romanCharValue(s[0]) >= romanCharValue(s[1])){
             total += romanCharValue(s[0]);
             s.erase(0, 1);
-        }
-        else
-        {
+        } 
+        else{
             total += (romanCharValue(s[1]) - romanCharValue(s[0]));
             s.erase(0, 1);
             s.erase(0, 1);
@@ -41,8 +41,7 @@ int convertRomanToInt(string s)
     return total;
 }
 
-int romanCharValue(char r)
-{
+int romanCharValue(char r){
     switch (r)
     {
     case 'I': return 1;
