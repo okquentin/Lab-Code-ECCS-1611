@@ -4,7 +4,8 @@
 using namespace std;
 
 // *** Function Prototypes ***
-int countWords(string str);
+int romanCharValue(char r);
+int convertRomanToInt(string s);
 
 int main(){
 
@@ -15,3 +16,9 @@ return 0;
 }
 
 // ** Function Headers ***
+int romanCharValue(char r){
+
+}
+int convertRomanToInt(string s){
+    
+}
