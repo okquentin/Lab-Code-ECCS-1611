@@ -14,6 +14,7 @@ int main(){
 // Variable Declarations
 
 int cardNum; // user input
+bool isCardValid( int digits[], int size ); 
 
 
 int digit1, digit2, digit3, digit4, digit5, digit6, digit7, digit8; // for operating on individual digits of the card number
