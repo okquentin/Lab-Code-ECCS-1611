@@ -1,6 +1,6 @@
 /*
 
- * File: MP3/source.cpp
+ * File: MP3.source.cpp
  * Author: Quentin Osterhage
  * Date: 11/10/2022
  *
