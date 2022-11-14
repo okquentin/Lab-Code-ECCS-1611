@@ -1,40 +1,75 @@
 #include <iostream>
-
 using namespace std;
 
-bool isCardValid(int digits[], int size ); 
+bool isCardValid(int digits[], int size);
 
-int main(){
-
-// Variable Declarations
-int cardSize = 8;
-int digits[cardSize];
-
-cout << "Enter card digits: ";
-for(int i = 0; i < cardSize; i++){
-    cin >> digits[i];
+int main()
+{
+    int size = 8;
+    int digits[8];
+    int cardNum;
+    int temp;
+    bool done = false;
+    while (!done)
+    {
+        cout << "Enter 8-digit credit card # or Q to quit: ";
+        cin >> cardNum;
+        if (cin.fail())
+        {
+            done = true;
+        }
+        else
+        {
+            for (int i = 0; i < size; i++)
+            {
+                temp = cardNum % 10;
+                cardNum = cardNum / 10;
+                digits[i] = temp;
+            }
+            if (isCardValid(digits, size))
+            {
+                cout << "Card is valid." << endl;
+            }
+            else
+            {
+                cout << "Card is invalid" << endl;
+            }
+        }
+    }
 }
 
-return 0;
+bool isCardValid(int digits[], int size)
+{
+    int sum1 = 0;
+    int sum2 = 0;
+    int temp = 0;
+    int total = 0;
+    for (int i = 0; i < size; i += 2)
+    {
+        sum1 += digits[i];
+    }
+    for (int i = 1; i < size; i += 2)
+    {
+        temp = digits[i] * 2;
+        if (temp >= 10)
+        {
+            sum2 += temp % 10;
+            temp = temp / 10;
+            sum2 += temp;
+        }
+        else
+        {
+            sum2 += temp;
+        }
+    }
+    total = sum1 + sum2;
+    total = total % 10;
+    if (total == 0)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
 }
-
-// *** Function Headers ***
-bool isCardValid(int digits[], int size){
-
-int oddSum = 0;
-int sum;
-int checksum;
-for(int i = 0; i < size; i++){
-
-    if(i % 2 != 0){oddSum += digits[i];}
-}
-for(int i = 0; i < size; i++){
-    sum += digits[i];
-}
-
-checksum = oddSum+sum;
-
-if(checksum % 10 == 0){return true;}
-else{return false;}
-
-} 
