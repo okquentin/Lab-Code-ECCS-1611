@@ -55,11 +55,12 @@ bool fileLength(string filename) {
         if (inFile.fail())
             break;
 
-        if (currentChar != ' ' && currentChar != '\n' && currentChar != ',' && currentChar != '.' && currentChar != '-')
-            length++;
+        if (isalpha(currentChar)) length++;
     }
 
     cout << "Characters: " << length << endl;
+
+    
 
     inFile.close();
     return true;
@@ -84,8 +85,10 @@ bool fileWordCount(string  filename) {
 
         if (inFile.fail())
             break;
-        if (0 != notThis.compare(word))
-            wordCount++;
+        for(int i = 0; i < word.length(); i++){
+            if(isalpha(word[i]))wordCount++;
+            break;
+        }
     }
 
     cout << "Words: " << wordCount << endl;

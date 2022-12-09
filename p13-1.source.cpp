@@ -41,7 +41,7 @@ void pressEnterToContinue() {
 bool fileLength(string filename) {
 
     ifstream inFile;
-    char currentChar;
+    string currentChar;
     int length = 0;
     inFile.open(filename);
 
@@ -50,13 +50,12 @@ bool fileLength(string filename) {
     }
 
     while (true) {
-        inFile.get(currentChar);
+        inFile >> currentChar;
 
         if (inFile.fail())
             break;
 
-        if (currentChar != ' ' && currentChar != '\n' && currentChar != ',' && currentChar != '.' && currentChar != '-')
-            length++;
+        length += currentChar.length();
     }
 
     cout << "Characters: " << length << endl;

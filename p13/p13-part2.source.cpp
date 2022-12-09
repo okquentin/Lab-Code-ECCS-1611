@@ -22,7 +22,7 @@ string filename;
     cout << "Input file: ";
     getline(cin, filename);
 
-    bool status = readFromFile(filename);
+    bool status = readFromCSVFile(filename);
     if(status) cout << "Success!\n";
     else cout << "failure. :-(\n";
 
