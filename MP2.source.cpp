@@ -1,279 +1,212 @@
 #include <iostream>
 using namespace std;
+// FUNCTION PROTOTYPES
+int rollDie( void );
+bool isTurnScoreLost( int die1value, int die2value );
+bool isTotalScoreLost( int die1value, int die2value );
+int turnTotal(int die1value, int die2value);
+char getUserInput( void );
+bool isWinningScore( int score ); 
+void displayRollResults(int die1value, int die2value);
+void comWin();
+void playWin();
+void displayScores(int playScore, int comScore);
 
-//*** FUNCTION PROTOTYPES ***
-char getUserInput(void);
-int rollDie(void);
-bool isTurnScoreLost(int die1value, int die2value);
-bool isTotalScoreLost(int die1value, int die2value);
-bool isWinningScore(int score);
-bool WinningScore(int score1, int score2);
+// MAIN FUNCTION
+int main(){
 
+// Variable Declarations
+int firstDie = 0;
+int secondDie = 0;
 
-// *** MAIN FUNCTION ***
-int main()
-{
-	int total1 = 0;
-	int total2 = 0;
-	int die1Value;
-	int die2Value;
-	int score = 0;
-	char input;
-	int turnTotal = 0;
-	int roundNum = 1;
-	srand(time(0));
-	
-    // Intro Prompt
-    cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
-    cout << "   Welcome to the game of pig! \n";
-    cout << "Program designed by Quentin Osterhage \n";
-    cout << "   ECCS 1611 - MP2 ""Roll Em' Pigs"" \n";
-    cout << "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
+bool turnLost = false;
+bool totalLost = false;
+int playScore = 0;
+int comScore = 0;
+int turnScore = 0;
+int turnNum = 1;
 
-    // The main algorithim for running the game 
-    // Runs until a winner has been decided
-	while (!WinningScore(total1, total2))
-	{   
-		bool turnDone = false;
-        cout << endl;
+char begin;
+char rollAgain;
+bool turnDone = false;
+bool comDone = false;
 
-		// Displays a round counter w/ scores for both players 
-		// Displays before each round
-		// If statements adjust graphics for the box when there is
-		// one or two digits to display
-		cout << "|------  ROUND " << roundNum;
-        if(roundNum < 10){cout << " ------|\n";} 
-        else{cout << " -----|\n";}
-		cout << "|   Player score: " << total1;
-        if(total1 < 10){cout << "    |\n";}
-        else{cout << "   |\n";}
-        cout << "|  Computer score: " << total2;
-        if(total2 < 10){cout << "   |\n";}
-        else{cout << "  |\n";}
-        cout << "|----------------------|\n";
-        cout << endl;
-		cout << "[Player Turn] \n";
-		
-		// Runs the player's turn until finished
-		while (!turnDone)
-		{
-			die1Value = 0;
-			die2Value = 0;
-			cout << "Turn score: " << turnTotal << endl;
-			input = getUserInput();
-			
-			// Rolls die when correct input is gathered from getUserInput()
-			if (input == 'r')
-			{
-				die1Value = rollDie(); 
-				die2Value = rollDie();
-				cout << "Rolled a " << die1Value << " and a " << die2Value << ". \n";
-				
-				// Stops roll and wipes total score when snake eyes are rolled
-				if (isTotalScoreLost(die1Value, die2Value))
-				{
-					cout << "Yikes! Snake eyes! \n"; 
-                    cout << "Total score is now zero. \n";
-					total1 = 0;
-					turnDone = true;
-				}
+bool win = false;
+string winner;
 
-				// Stops roll and wipes turn score when a one is rolled
-				else if (isTurnScoreLost(die1Value, die2Value))
-				{
-					cout << "Sorry! " << "A ";
-                    if(die1Value < die2Value){cout << die1Value;}
-                    else{cout << die2Value;}
-                    cout << " was rolled.\n";
-                    cout << "Turn score lost. \n";
-					turnTotal = 0;
-					turnDone = true;
-					
-				// If no ones are rolled, the values for the roll are added to turn total
-				}else
-				{
-					turnTotal += die1Value + die2Value;
-				}
-			}
-			// Stops roll when 's' is input
-			else
-			{
-				total1 += turnTotal;
-				turnTotal = 0;
-				turnDone = true;
-			}
-		}
-		
-        cout << endl << "[Computer Turn] \n";
+// User Prompt
+cout << "Welcome to the game of Pig" << endl;
+cout << "Player, please roll your die to begin the game." << endl;
 
-		// Runs the computer's turn until scoring at least 20 points
-		while (turnTotal <= 20)
-		{
-			die1Value = 0;
-			die2Value = 0;
-			die1Value = rollDie();
-			die2Value = rollDie();
-			if(total2 < 100){cout << "Rolled a " << die1Value << " and a " << die2Value << ".\n";}
+cout << "Are you ready to begin the game? (Y/N): ";
+cin >> begin;
 
-			// Allows computer to end turn when surpassing 100 points
-			if ((total2 + turnTotal) >= 100)
-			{
-				total2 += turnTotal;
-				break;
-			}
+// Player and COM take turns rolling the dice.
+while(win == false){
 
-			// Stops roll and wipes total score when snake eyes are rolled
-			else if (isTotalScoreLost(die1Value, die2Value))
-			{
-				cout << "Snake eyes! \n";
-                cout << "Computer total score is now zero. \n";
-				total2 = 0;
-				break;
-			}
-
-			// Stops roll and wipes turn score when a one is rolled
-			else if (isTurnScoreLost(die1Value, die2Value))
-			{
-				cout << "A ";
-                if(die1Value < die2Value){cout << die1Value;}
-                else{cout << die2Value;}
-                cout << " was rolled.\n";
-                cout << "Turn score lost. \n";
-				turnTotal = 0;
-				break;
-			}
-			else
-			{ 
-				turnTotal = die1Value + die2Value + turnTotal;
-				cout << "Turn score: " << turnTotal << endl;
-			}
-		}
-		// Adds turn total to game total 
-		// Adds when computer turn score >= 20 and ones were not rolled.
-		if (!isTurnScoreLost(die1Value, die2Value) && !isTotalScoreLost(die1Value, die2Value)) 
-		{
-			total2 += turnTotal;
-			turnTotal = 0;
-		}
-		roundNum++;
-	}
-
-// Displaying Game Result w/ Ascii Art
-
-	// Player Victory
-	if (total1 > total2)
-	{
-        cout << "\n";
-        cout << "     [PLAYER VICTORY]      \n";
-		cout << "You've beat the computer! \n";
-        cout << "    Congratulations! \n";
-        cout << endl;
-
-        cout << "      ┈┈┈┈┈┈▕▔╲ \n";
-        cout << "      ┈┈┈┈┈┈┈▏▕ \n";
-        cout << "      ┈┈┈┈┈┈┈▏▕▂▂▂ \n";
-        cout << "      ▂▂▂▂▂▂╱┈▕▂▂▂▏\n";
-        cout << "      ▉▉▉▉▉┈┈┈▕▂▂▂▏\n";
-        cout << "      ▉▉▉▉▉┈┈┈▕▂▂▂▏\n";
-        cout << "      ▔▔▔▔▔▔╲▂▕▂▂▂ \n";
-        cout << endl;
-	}
-
-	// Computer Victory
-	else if (total2 > total1) {
-        cout << "\n";
-		cout << "          [COMPUTER VICTORY]     \n";
-        cout << "     The computer has won the game! \n";
-        cout << "         Better luck next time! \n";
-
-            cout << "     ,---------------------------,\n";
-            cout << "     |  /---------------------\\  |\n";
-            cout << "     | |                       | |\n";
-            cout << "     | |     0         0       | |\n";
-            cout << "     | |          <            | |\n";
-            cout << "     | |      \\________/       | |\n";
-            cout << "     | |                       | |\n";
-            cout << "     |  \\_____________________/  |\n";
-            cout << "     |___________________________|\n";
-            cout << "   ,---\\_____     []     _______/--------,\n";
-            cout << "  /         /______________\\           / |\n";
-            cout << " /___________________________________ /  |\n";
-            cout << " |                                   |   |\n";
-            cout << " |  _ _ _                 [-------]  |   |\n";
-            cout << " |  o o o                 [-------]  |  / \n";
-            cout << " |___________________________________| /   \n";
- 
+cout << endl;
+cout << "[TURN " << turnNum << " - BEGIN]\n";
+cout << endl;
+// Player Turn
+while(!turnDone){
     
-	}
+    rollAgain = getUserInput();
+    if(rollAgain != 'n' && rollAgain != 'N'){
+    firstDie = rollDie();
+    secondDie = rollDie();
+    displayRollResults(firstDie, secondDie);
+    turnLost = isTurnScoreLost(firstDie, secondDie);
+    totalLost = isTotalScoreLost(firstDie, secondDie);
+    win = isWinningScore(playScore + turnScore);
+    
+        if(turnLost == true){
+        turnScore = 0;
+        cout << "Ouch! You've rolled a 1! :(" << endl;
+        cout << "Your score is now: " << playScore + turnScore << endl;
 
-// *** END OF MAIN ***
+        turnDone = true;
+        comDone = false;
+        break;
+        }
+        else if (totalLost == true){
+        playScore = 0;
+        turnScore = 0;
+        cout << "Ouch! Snake eyes! :(" << endl;
+        cout << "Your score is now: " << playScore + turnScore << endl;
+
+        turnDone = true;
+        comDone = false;
+        break;
+        }
+        else{
+        turnScore += turnTotal(firstDie, secondDie);
+        cout << "Your score is now: " << playScore + turnScore << endl;
+
+            if(win == true){
+            playWin();
+            return 0;
+            }
+        }
+    }
+    else{
+    playScore += turnScore;
+    turnDone = true;
+    comDone = false;
+    turnScore = 0;
+    }
+
+}
+
+cout << endl;
+cout << endl;
+
+// COM Turn
+while (!comDone){
+   
+    while(turnScore < 20){
+    firstDie = rollDie();
+    secondDie = rollDie();
+    displayRollResults(firstDie, secondDie);
+    turnLost = isTurnScoreLost(firstDie, secondDie);
+    totalLost = isTotalScoreLost(firstDie, secondDie);
+    win = isWinningScore(comScore + turnScore);
+
+        if(turnLost == true){
+        turnScore = 0;
+        cout << "A 1 was rolled! :(" << endl;
+        cout << "Com score is now: " << comScore + turnScore << endl;
+        comDone = true;
+        break;
+        }
+        else if (totalLost == true){
+        comScore = 0;
+        turnScore = 0;
+        cout << "Snake eyes! :(" << endl;
+        cout << "Com score is now: " << comScore + turnScore << endl;
+        comDone = true;
+        break;
+        }
+        else{
+        turnScore += turnTotal(firstDie, secondDie);
+        cout << "Com score is now: " << comScore + turnScore << endl;
+
+            if(win == true){
+            void displayScores(int playScore, int comScore);
+            comWin();
+            return 0;
+            }
+        }
+    }
+comScore += turnScore;
+void displayScores(int playScore, int comScore);
+comDone = true;
+turnDone = false;
+turnScore = 0;
+turnNum++;
+}
+
+}
+// END OF MAIN
 return 0;
 }
 
-
-// *** FUNCTION DEFINITIONS ***
-
-// * getUserInput: Prompts the user to either roll the dice or end their turn.
-// * Parameters: none
-// * Returns: char roll - character of R/r or S/s.
-char getUserInput(void){
-    char roll;
-    do{
-        cout << "Roll or stop? (R/S): ";
-        cin >> roll;
-
-        if (roll != 'r' && roll!= 'R' && roll!= 's' && roll!= 'S'){
-            cout << "Please indicate R to roll, or S to stop: " << endl;
-        }
-    } while(roll != 'r' && roll!= 'R' && roll!= 's' && roll!= 'S');
-    
-    return roll;
-}
-
-// * rollDie: Simulates the roll of a single die.
-// * Parameters: none
-// * Returns: int - The value of a single die (1-6).
-
-int rollDie(void){
+// FUNCTION HEADERS
+int rollDie( void ){
     const int NUMBER_OF_DIE_SIDES = 6;
     const int LOWEST_DIE_VALUE = 1;
     return rand() % NUMBER_OF_DIE_SIDES + LOWEST_DIE_VALUE;
 }
 
-// * isTurnScoreLost: Determines whether a 1 has been rolled.
-// * Parameters: int die1value, int die2value - values of the two dice rolled.
-// * Returns: boolean result - true or false
-
-bool isTurnScoreLost(int die1value, int die2value){
-	if(die1value == 1 || die2value == 1){return true;} 
-	else{return false;}
+int turnTotal(int die1value, int die2value){
+    int score = die1value + die2value;
+    return score;
 }
 
-// * isTotalScoreLost: Determines whether two 1's have been rolled.
-// * Parameters: int die1value, intdie2value - values of the two dice rolled.
-// * Returns: boolean result - true or false
-
-bool isTotalScoreLost(int die1value, int die2value){
-	if(die1value == 1 && die2value == 1){return true;} 
-	else{return false;}
+bool isTurnScoreLost( int die1value, int die2value ){
+    if(die1value == 1 || die2value == 1){return true;} 
+    else return false;
 }
 
-// * isWinningScore: Determines whether a player has reached 100 points.
-// * Parameters: int score - total score of the human player or the computer
-// * Returns: boolean result - true or false
-
-bool isWinningScore(int score){
-	if(score >= 100){return true;}
-	else{return false;}
+bool isTotalScoreLost( int die1value, int die2value ){
+    if(die1value == 1 && die2value == 1){return true;}
+    else return false;
 }
 
-// * WinningScore: Uses isWinningScore function to determine if the human or computer has reached 100 points.
-// * Parameters: int score1, int score2 - the total scores of the human and computer respectively
-// * Returns: boolean result - true or false
+char getUserInput( void ){
+char rollAgain;
 
-bool WinningScore(int score1, int score2){
-	if(isWinningScore(score1)){return true;}
-	else if(isWinningScore(score2)){return true;}
-	else{return false;}
+    cout << "Roll die? (Y/N): ";
+    cin >> rollAgain;
+return rollAgain;
 }
 
+bool isWinningScore(int score ){
+if(score >= 100){return true;}
+else{return false;}
+}
+void comWin(){
+cout << endl;
+cout << "The Computer" << " has won the match!\n";
+cout << "Thank you for playing!\n";
+
+}
+void playWin(){
+cout << endl;
+cout << "The Player" << " has won the match!\n";
+cout << "Thank you for playing!\n";
+}
+
+void displayRollResults(int die1value, int die2value){
+    bool turnLost = isTotalScoreLost(die1value, die2value);
+    if(turnLost == true){
+        cout << "Sorry! A 1 was rolled. Turn has ended, with a total of 0" << endl;
+    } else{
+        cout << "Rolled a " << die1value << " and a " << die2value << "!" << endl;
+    }
+}
+
+void displayScores(int playScore, int comScore){
+cout << endl;
+cout << "Current scores: Player - " << playScore << " | Computer - " << comScore;
+cout << endl;
+}
