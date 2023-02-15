@@ -9,11 +9,9 @@
 
 */
 
-
 #include <iostream>
 #include <string>
 using namespace std;
-
 
 // *** FUNCTION PROTOTYPES ***
 int getPlayerInput(string playerName);
@@ -84,8 +82,9 @@ int main(){
                 match++;
                 player1Score++;
                 displayGameStats(ties, player1Score, player2Score);
+                
                 cout << "Would you like to play again? (Y/N): ";
-                cin >> yesNo;
+                    cin >> yesNo;
 
                 if(yesNo == 'y' || yesNo == 'Y'){
                     displayBoard(board);
@@ -107,8 +106,9 @@ int main(){
                 ties++;
                 displayGameStats(ties, player1Score, player2Score);
                 cout << endl;
+                
                 cout << "Would you like to play again? (Y/N): ";
-                cin >> yesNo;
+                    cin >> yesNo;
 
                 if(yesNo == 'y' || yesNo == 'Y'){
                     displayBoard(board);
@@ -142,8 +142,9 @@ int main(){
                 player2Score++;
                 displayGameStats(ties, player1Score, player2Score);
                 cout << endl;
+
                 cout << "Would you like to play again? (Y/N): ";
-                cin >> yesNo;
+                    cin >> yesNo;
 
                 if(yesNo == 'y' || yesNo == 'Y'){
                     displayBoard(board);
@@ -165,8 +166,9 @@ int main(){
             ties++;
             displayGameStats(ties, player1Score, player2Score);
             cout << endl;
+
             cout << "Would you like to play again? (Y/N): ";
-            cin >> yesNo;
+                cin >> yesNo;
 
                 if(yesNo == 'y' || yesNo == 'Y'){
                 displayBoard(board);
@@ -179,9 +181,9 @@ int main(){
             }
     }       
 
-
+// END OF MAIN
 return 0;
-} // END OF MAIN
+} 
 
 // *** FUNCTION DEFINITIONS ***
 
