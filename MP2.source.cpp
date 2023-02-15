@@ -1,5 +1,18 @@
+/*
+
+ * File: MP2.source.cpp
+ * Author: Quentin Osterhage
+ * Date: 10/20/2022
+ *
+ * Description: The Game of Pig, which can be played against a simulated opponent
+
+
+*/
+
+
 #include <iostream>
 using namespace std;
+
 // FUNCTION PROTOTYPES
 int rollDie( void );
 bool isTurnScoreLost( int die1value, int die2value );
@@ -44,56 +57,57 @@ cin >> begin;
 // Player and COM take turns rolling the dice.
 while(win == false){
 
-cout << endl;
-cout << "[TURN " << turnNum << " - BEGIN]\n";
-cout << endl;
+    cout << endl;
+    cout << "[TURN " << turnNum << " - BEGIN]\n";
+    cout << endl;
+
 // Player Turn
-while(!turnDone){
-    
-    rollAgain = getUserInput();
-    if(rollAgain != 'n' && rollAgain != 'N'){
-    firstDie = rollDie();
-    secondDie = rollDie();
-    displayRollResults(firstDie, secondDie);
-    turnLost = isTurnScoreLost(firstDie, secondDie);
-    totalLost = isTotalScoreLost(firstDie, secondDie);
-    win = isWinningScore(playScore + turnScore);
-    
-        if(turnLost == true){
-        turnScore = 0;
-        cout << "Ouch! You've rolled a 1! :(" << endl;
-        cout << "Your score is now: " << playScore + turnScore << endl;
+    while(!turnDone){
+        
+        rollAgain = getUserInput();
+        if(rollAgain != 'n' && rollAgain != 'N'){
+        firstDie = rollDie();
+        secondDie = rollDie();
+        displayRollResults(firstDie, secondDie);
+        turnLost = isTurnScoreLost(firstDie, secondDie);
+        totalLost = isTotalScoreLost(firstDie, secondDie);
+        win = isWinningScore(playScore + turnScore);
+        
+            if(turnLost == true){
+            turnScore = 0;
+            cout << "Ouch! You've rolled a 1! :(" << endl;
+            cout << "Your score is now: " << playScore + turnScore << endl;
 
-        turnDone = true;
-        comDone = false;
-        break;
-        }
-        else if (totalLost == true){
-        playScore = 0;
-        turnScore = 0;
-        cout << "Ouch! Snake eyes! :(" << endl;
-        cout << "Your score is now: " << playScore + turnScore << endl;
-
-        turnDone = true;
-        comDone = false;
-        break;
-        }
-        else{
-        turnScore += turnTotal(firstDie, secondDie);
-        cout << "Your score is now: " << playScore + turnScore << endl;
-
-            if(win == true){
-            playWin();
-            return 0;
+            turnDone = true;
+            comDone = false;
+            break;
             }
+            else if (totalLost == true){
+            playScore = 0;
+            turnScore = 0;
+            cout << "Ouch! Snake eyes! :(" << endl;
+            cout << "Your score is now: " << playScore + turnScore << endl;
+
+            turnDone = true;
+            comDone = false;
+            break;
+            }
+            else{
+            turnScore += turnTotal(firstDie, secondDie);
+            cout << "Your score is now: " << playScore + turnScore << endl;
+
+                if(win == true){
+                playWin();
+                return 0;
+                }
         }
     }
-    else{
-    playScore += turnScore;
-    turnDone = true;
-    comDone = false;
-    turnScore = 0;
-    }
+        else{
+        playScore += turnScore;
+        turnDone = true;
+        comDone = false;
+        turnScore = 0;
+        }
 
 }
 
@@ -112,31 +126,32 @@ while (!comDone){
     win = isWinningScore(comScore + turnScore);
 
         if(turnLost == true){
-        turnScore = 0;
-        cout << "A 1 was rolled! :(" << endl;
-        cout << "Com score is now: " << comScore + turnScore << endl;
-        comDone = true;
-        break;
+            turnScore = 0;
+            cout << "A 1 was rolled! :(" << endl;
+            cout << "Com score is now: " << comScore + turnScore << endl;
+            comDone = true;
+            break;
         }
         else if (totalLost == true){
-        comScore = 0;
-        turnScore = 0;
-        cout << "Snake eyes! :(" << endl;
-        cout << "Com score is now: " << comScore + turnScore << endl;
-        comDone = true;
-        break;
+            comScore = 0;
+            turnScore = 0;
+            cout << "Snake eyes! :(" << endl;
+            cout << "Com score is now: " << comScore + turnScore << endl;
+            comDone = true;
+            break;
         }
         else{
-        turnScore += turnTotal(firstDie, secondDie);
-        cout << "Com score is now: " << comScore + turnScore << endl;
+            turnScore += turnTotal(firstDie, secondDie);
+            cout << "Com score is now: " << comScore + turnScore << endl;
 
-            if(win == true){
-            void displayScores(int playScore, int comScore);
-            comWin();
-            return 0;
-            }
+                if(win == true){
+                    void displayScores(int playScore, int comScore);
+                    comWin();
+                    return 0;
+                }
         }
     }
+
 comScore += turnScore;
 void displayScores(int playScore, int comScore);
 comDone = true;
@@ -146,9 +161,10 @@ turnNum++;
 }
 
 }
-// END OF MAIN
+
+
 return 0;
-}
+} // END OF MAIN
 
 // FUNCTION HEADERS
 int rollDie( void ){
@@ -184,12 +200,14 @@ bool isWinningScore(int score ){
 if(score >= 100){return true;}
 else{return false;}
 }
+
 void comWin(){
 cout << endl;
 cout << "The Computer" << " has won the match!\n";
 cout << "Thank you for playing!\n";
 
 }
+
 void playWin(){
 cout << endl;
 cout << "The Player" << " has won the match!\n";
