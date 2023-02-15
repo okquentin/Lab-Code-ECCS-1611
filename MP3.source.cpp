@@ -4,7 +4,7 @@
  * Author: Quentin Osterhage
  * Date: 11/10/2022
  *
- * Description: Allows to players to play Tic-Tac-Toe with each other.
+ * Description: Allows two players to play Tic-Tac-Toe with each other.
 
 
 */
@@ -28,160 +28,160 @@ bool playerTie(char board[]);
 // *** MAIN FUNCTION ***
 int main(){
 
-// Variable Declarations
-int match = 1;
-int location;
-int boardSize = 9;
-char board[] = {'1', '2', '3', '4', '5', '6', '7', '8', '9'};
-string player1;
-char player1Mark = 'X';
-int player1Score = 0;
-string player2;
-char player2Mark = 'O';
-int player2Score = 0;
-int ties = 0;
-bool playAgain = false;
-char yesNo;
+    // Variable Declarations
+    int match = 1;
+    int location;
+    int boardSize = 9;
+    char board[] = {'1', '2', '3', '4', '5', '6', '7', '8', '9'};
+    string player1;
+    char player1Mark = 'X';
+    int player1Score = 0;
+    string player2;
+    char player2Mark = 'O';
+    int player2Score = 0;
+    int ties = 0;
+    bool playAgain = false;
+    char yesNo;
 
-// Initial Game Prompt
-    cout << "Please enter name of Player 1 (x): ";
-        getline(cin, player1);  
-    cout << "Please enter name of Player 2 (o): ";
-        getline(cin, player2);
+    // Initial Game Prompt
+        cout << "Please enter name of Player 1 (x): ";
+            getline(cin, player1);  
+        cout << "Please enter name of Player 2 (o): ";
+            getline(cin, player2);
 
-    cout << endl;
-    cout << "[Welcomte to Tic Tac Toe!]\n";
-    displayBoard(board);
-    cout << endl;
-
-
-// The main algorithim for running the game
-// Runs until player decies to quit
-// Player can decide to end game during end of match prompt
-for(;;){
-    
-    // Getting input from Player 1
-    // Determining move legality
-    // Placing mark on board using player input
-    // Displaying the board after mark has been placed
-    location = getPlayerInput(player1);
-        while(!isLegalMove(board, location)){
-            cout << "Please choose a legal space. \n";
-            location = getPlayerInput(player1);
-            isLegalMove(board, location);
-        }
-        if(isLegalMove(board, location)){placeMarkOnBoard(board, player1Mark, location);}
+        cout << endl;
+        cout << "[Welcomte to Tic Tac Toe!]\n";
         displayBoard(board);
         cout << endl;
 
-        // Determines if Player 1 has won the match
-        // Prompts Player 1 if they wish to play again or end the game
-        if(hasThreeInRow(board)){
-        cout << endl;
-        cout << "Congratulations to " << player1 << "!\n";
-        cout << endl;
-        clearBoard(board);
-        match++;
-        player1Score++;
-        displayGameStats(ties, player1Score, player2Score);
-        cout << "Would you like to play again? (Y/N): ";
-        cin >> yesNo;
 
-            if(yesNo == 'y' || yesNo == 'Y'){
-            displayBoard(board);
-            cout << endl;
-            }
-            else{
-                cout << "Thank you for playing!";
-                return 0;
-            }
-        }
+    // The main algorithim for running the game
+    // Runs until player decies to quit
+    // Player can decide to end game during end of match prompt
+    for(;;){
         
-        // Determines if the game has been tied
-        // Prompts Player 1 if they wish to play again or end the game
-        if(playerTie(board)){
-        cout << "It's a tie!";
-        cout << endl;
-        clearBoard(board);
-        match++;
-        ties++;
-        displayGameStats(ties, player1Score, player2Score);
-        cout << endl;
-        cout << "Would you like to play again? (Y/N): ";
-        cin >> yesNo;
-
-            if(yesNo == 'y' || yesNo == 'Y'){
+        // Getting input from Player 1
+        // Determining move legality
+        // Placing mark on board using player input
+        // Displaying the board after mark has been placed
+        location = getPlayerInput(player1);
+            while(!isLegalMove(board, location)){
+                cout << "Please choose a legal space. \n";
+                location = getPlayerInput(player1);
+                isLegalMove(board, location);
+            }
+            if(isLegalMove(board, location)){placeMarkOnBoard(board, player1Mark, location);}
             displayBoard(board);
             cout << endl;
+
+            // Determines if Player 1 has won the match
+            // Prompts Player 1 if they wish to play again or end the game
+            if(hasThreeInRow(board)){
+                cout << endl;
+                cout << "Congratulations to " << player1 << "!\n";
+                cout << endl;
+                clearBoard(board);
+                match++;
+                player1Score++;
+                displayGameStats(ties, player1Score, player2Score);
+                cout << "Would you like to play again? (Y/N): ";
+                cin >> yesNo;
+
+                if(yesNo == 'y' || yesNo == 'Y'){
+                    displayBoard(board);
+                    cout << endl;
+                }
+                else{
+                    cout << "Thank you for playing!";
+                    return 0;
+                }
             }
-            else{
-                cout << "Thank you for playing!";
-                return 0;
+            
+            // Determines if the game has been tied
+            // Prompts Player 1 if they wish to play again or end the game
+            if(playerTie(board)){
+                cout << "It's a tie!";
+                cout << endl;
+                clearBoard(board);
+                match++;
+                ties++;
+                displayGameStats(ties, player1Score, player2Score);
+                cout << endl;
+                cout << "Would you like to play again? (Y/N): ";
+                cin >> yesNo;
+
+                if(yesNo == 'y' || yesNo == 'Y'){
+                    displayBoard(board);
+                    cout << endl;
+                }
+                else{
+                    cout << "Thank you for playing!";
+                    return 0;
+                }
             }
-        }
+            
+
+        location = getPlayerInput(player2);
+            while(!isLegalMove(board, location)){
+                cout << "Please choose an empty space. \n";
+                location = getPlayerInput(player2);
+                isLegalMove(board, location);
+            }
+            if(isLegalMove(board, location)){placeMarkOnBoard(board, player2Mark, location);}
+            displayBoard(board);
+            cout << endl;
+
+            // Determines if Player 2 has won the match
+            // Displays current standings for the whole game
+            // Prompts Player 2 if they wish to play again or end the game
+            if(hasThreeInRow(board)){
+                cout << "Congratulations to " << player2 << " !";
+                cout << endl;
+                clearBoard(board);
+                match++;
+                player2Score++;
+                displayGameStats(ties, player1Score, player2Score);
+                cout << endl;
+                cout << "Would you like to play again? (Y/N): ";
+                cin >> yesNo;
+
+                if(yesNo == 'y' || yesNo == 'Y'){
+                    displayBoard(board);
+                    cout << endl;
+                }
+                else{
+                    cout << "Thank you for playing!";
+                    return 0;
+                }
+            }
         
-
-    location = getPlayerInput(player2);
-        while(!isLegalMove(board, location)){
-            cout << "Please choose an empty space. \n";
-            location = getPlayerInput(player2);
-            isLegalMove(board, location);
-        }
-        if(isLegalMove(board, location)){placeMarkOnBoard(board, player2Mark, location);}
-        displayBoard(board);
-        cout << endl;
-
-        // Determines if Player 2 has won the match
-        // Displays current standings for the whole game
-        // Prompts Player 2 if they wish to play again or end the game
-        if(hasThreeInRow(board)){
-        cout << "Congratulations to " << player2 << " !";
-        cout << endl;
-        clearBoard(board);
-        match++;
-        player2Score++;
-        displayGameStats(ties, player1Score, player2Score);
-        cout << endl;
-        cout << "Would you like to play again? (Y/N): ";
-        cin >> yesNo;
-
-            if(yesNo == 'y' || yesNo == 'Y'){
-            displayBoard(board);
+            // Determines if the game has been tied
+            // Prompts Player 2 if they wish to play again or end the game
+            if(playerTie(board)){
+            cout << "It's a tie!\n";
             cout << endl;
-            }
-            else{
-                cout << "Thank you for playing!";
-                return 0;
-            }
-        }
-       
-        // Determines if the game has been tied
-        // Prompts Player 2 if they wish to play again or end the game
-        if(playerTie(board)){
-        cout << "It's a tie!\n";
-        cout << endl;
-        clearBoard(board);
-        match++;
-        ties++;
-        displayGameStats(ties, player1Score, player2Score);
-        cout << endl;
-        cout << "Would you like to play again? (Y/N): ";
-        cin >> yesNo;
-
-            if(yesNo == 'y' || yesNo == 'Y'){
-            displayBoard(board);
+            clearBoard(board);
+            match++;
+            ties++;
+            displayGameStats(ties, player1Score, player2Score);
             cout << endl;
-            }
-            else{
-                cout << "Thank you for playing!";
-                return 0;
-            }
-        }
- }       
+            cout << "Would you like to play again? (Y/N): ";
+            cin >> yesNo;
 
-// END MAIN
+                if(yesNo == 'y' || yesNo == 'Y'){
+                displayBoard(board);
+                cout << endl;
+                }
+                else{
+                    cout << "Thank you for playing!";
+                    return 0;
+                }
+            }
+    }       
+
+
 return 0;
-}
+} // END OF MAIN
 
 // *** FUNCTION DEFINITIONS ***
 
